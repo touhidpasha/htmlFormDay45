@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>my form</title>
+    <style>
+        body {
+
+
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+
+        #label-input {
+
+            align-items: center;
+            display: flex;
+            flex-direction: row;
+        }
+
+        label {
+            width: 30%;
+            margin: 6px 3px 3px 3px;
+            text-align: right;
+        }
+
+        input {
+            width: 70%;
+        }
+
+        h1 {
+            width: 100%;
+            background-color: orange;
+            text-align: center;
+        }
+        button{
+            float: right;
+            padding-right: 10%;
+            width: 80%;
+        }
+        error-output{
+            color: red;
+            font-style: italic;
+            padding-left: 70%;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <form>
+        <div id="label-input">
+            <h1>HTML5 input fields</h1>
+        </div>
+        <div id="label-input">
+            <label>text input type for name</label>
+            <input type="text" name="text" id="text">
+        </div>
+        <div id="label-input">
+            <error-output class="text-error" for="text"></error-output>
+        </div>
+        <div id="label-input">
+            <label>password input type</label>
+            <input type="password" name="password" id="password">
+        </div>
+        <div id="label-input">
+            <error-output class="paswd-error" for="password"></error-output>
+        </div>
+        <div id="label-input">
+            <label>email input</label>
+            <input type="email" name="email" id="email">
+        </div>
+        <div id="label-input">
+            <error-output class="email-error" for="email"></error-output>
+        </div>
+        <div id="label-input">
+            <label>url input</label>
+            <input type="url" name="url" id="url">
+        </div>
+        <div id="label-input">
+            <label>number input </label>
+            <input type="number" name="number" id="number">
+        </div>
+        <div id="label-input">
+            <label>tele input </label>
+            <input type="tel" name="tel" id="tel">
+        </div>
+        <div id="label-input">
+            <label>search input</label>
+            <input type="search" name="search" id="search">
+        </div>
+        <div id="label-input">
+            <label>date and time</label>
+            <input type="datetime-local" name="datetime-local" id="datatime-local">
+        </div>
+        <div id="label-input">
+            <label>choose ur salary</label>
+            <input type="range" name="salary" id="salary" min="300000" max="500000" step="100" value="400000">
+            <output class="salary-output" for="salary">40000</output>
+        </div>
+        <div>
+            <button>submit</button>
+        </div>
+    </form>
+    <script>
+        const text=document.querySelector("#text");
+        const textError=document.querySelector('.text-error');
+        text.addEventListener('input',function(){
+            let nameRegex=RegExp('^[A-Z]{1}[a-z]{2,}$');
+            if(nameRegex.test(text.value))
+            textError.textContent="";
+            else
+            textError.textContent="name is incorrect"
+        });
+
+        const salary=document.querySelector("#salary");
+        const output=document.querySelector('.salary-output');
+        salary.addEventListener('input',function(){
+            output.textContent=salary.value;
+        });
+
+
+        const email=document.querySelector("#email");
+        const emailError=document.querySelector('.email-error');
+        email.addEventListener('input',function(){
+            let emailegex=RegExp('^[a-z0-9_+-]*(.[a-z0-9_+-]*?)@[a-z0-9]*.[a-z]*[a-z]*?$');
+            if(emailRegex.test(email.value))
+            emailError.textContent="";
+            else
+            emailError.textContent="email is incorrect"
+        });
+        // const EMAIL_PATTERN1 = RegExp('[a-z0-9_+-]*(.[a-z0-9_+-]*?)@[a-z0-9]*.[a-z]*[a-z]*?$');
+        // const password=RegExp('^[a-zA-Z]{1,}[0-9]{1,}$');
+
+    </script>
+</body>
+
+</html>
